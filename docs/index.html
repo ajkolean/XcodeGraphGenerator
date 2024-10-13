@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>XcodeGraphRenderer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <!-- Cytoscape.js and layout extensions -->
+    <script src="https://unpkg.com/cytoscape@3.23.0/dist/cytoscape.min.js"></script>
+    <script src="https://unpkg.com/layout-base/layout-base.js"></script>
+    <script src="https://unpkg.com/cose-base/cose-base.js"></script>
+    <script src="https://unpkg.com/cytoscape-fcose/cytoscape-fcose.js"></script>
+</head>
+
+<body class="dark-mode"> <!-- Default theme set to dark mode -->
+
+    <!-- Legend and theme toggle -->
+    <div id="legend">
+        <button id="theme-toggle" aria-label="Toggle Theme" title="Toggle Light/Dark Mode">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M17.293 13.293a8 8 0 11-10.586-10.586 8.001 8.001 0 0010.586 10.586z" />
+            </svg>
+        </button>
+        <h4>Legend</h4>
+        <div id="product-types-legend"></div>
+    </div>
+
+    <!-- Topbar containing search and filters -->
+    <div id="topbar">
+        <div id="search-container">
+            <input type="text" id="search" placeholder="Search..." aria-label="Search">
+        </div>
+        <div id="filters">
+            <!-- Product Type Filter -->
+            <div>
+                <button class="collapsible">Product Types</button>
+                <div class="content" id="product-type-filter"></div>
+            </div>
+
+            <!-- Platform Filter -->
+            <div>
+                <button class="collapsible">Platforms</button>
+                <div class="content" id="platform-filter"></div>
+            </div>
+
+            <!-- Project Filter -->
+            <div>
+                <button class="collapsible">Projects</button>
+                <div class="content" id="project-filter"></div>
+            </div>
+
+            <!-- Package Filter -->
+            <div id="packages-filter-container">
+                <button class="collapsible">Packages</button>
+                <div class="content" id="package-filter"></div>
+            </div>
+        </div>
+
+        <!-- Reset Filters Button -->
+        <div id="reset-container">
+            <button id="reset-filters" aria-label="Reset All Filters" title="Reset All Filters">
+                Reset Filters
+            </button>
+        </div>
+    </div>
+
+    <!-- Cytoscape graph container -->
+    <div id="cy"></div>
+
+    <!-- Node Info Panel with Resize Handle -->
+    <div id="node-info">
+        <div id="resize-handle"></div>
+        <h4>Node Details</h4>
+        <div id="node-details"></div>
+    </div>
+
+    <!-- JavaScript modules -->
+    <script type="module" src="js/theme.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

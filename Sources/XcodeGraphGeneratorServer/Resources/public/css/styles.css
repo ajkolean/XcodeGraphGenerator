@@ -1,0 +1,317 @@
+/* styles.css */
+
+/* Root CSS Variables for Theme Colors */
+:root {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --legend-bg-color: #f0f0f0;
+    --topbar-bg-color: #f0f0f0;
+    --filter-bg-color: #ffffff;
+    --node-info-bg-color: #f0f0f0;
+    --border-color: #cccccc;
+    --filter-hover-bg: #e0e0e0;
+    --filter-active-bg: #d0d0d0;
+    --reset-button-bg: #ff6666;
+    --reset-button-hover-bg: #ff4d4d;
+}
+
+body.dark-mode {
+    --background-color: #1e1e1e;
+    --text-color: #f0f0f0;
+    --legend-bg-color: #2e2e2e;
+    --topbar-bg-color: #2e2e2e;
+    --filter-bg-color: #3e3e3e;
+    --node-info-bg-color: #2e2e2e;
+    --border-color: #444444;
+}
+
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Legend Styles */
+#legend {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    background-color: var(--legend-bg-color);
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 10;
+    border-right: 1px solid var(--border-color);
+    height: 100%;
+    overflow-y: auto;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#legend h4, #legend h5 {
+    margin-top: 0;
+    color: var(--text-color);
+}
+
+#legend p {
+    margin: 5px 0;
+    color: var(--text-color);
+        font-size: 12px;
+}
+
+.legend-color {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+    margin-right: 5px;
+    border: 1px solid var(--text-color);
+    border-radius: 2px;
+}
+
+/* Top Bar Styles */
+#topbar {
+    position: absolute;
+    top: 0;
+    left: 200px; /* Same as legend width */
+    height: 50px; /* Adjust the height as needed */
+    box-sizing: border-box;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    color: var(--text-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Theme Toggle Button */
+#theme-toggle svg {
+    width: 20x;  /* Adjust size as needed */
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#theme-toggle {
+    padding: 5px;  /* Ensure there's enough padding for the icon */
+    display: flex;
+    align-items: center;  /* Center the icon if needed */
+    margin-bottom: 30px;
+}
+
+#theme-toggle:hover {
+    background-color: #666;
+}
+
+/* Search Input Styles */
+#search-container {
+    margin-right: 10px;
+}
+
+#search {
+    width: 200px;
+    padding: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+    background-color: var(--filter-bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+#search::placeholder {
+    color: #aaa;
+}
+
+/* Filters Styles */
+#filters {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    color: var(--text-color);
+}
+
+#packages-filter-container {
+   display: none;
+}
+
+#filters > div {
+    margin-right: 10px;
+    position: relative;
+}
+
+/* Reset Filters Button Styles */
+#reset-container {
+    margin-right: 10px;
+}
+
+#reset-filters {
+    padding: 6px 12px;
+    font-size: 16px;
+    background-color: var(--reset-button-bg);
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#reset-filters:hover {
+    background-color: var(--reset-button-hover-bg);
+    color: #ffffff;
+}
+
+
+.collapsible {
+    background-color: var(--filter-bg-color);
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 6px 12px;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.collapsible:hover {
+    background-color: #555;
+}
+
+.collapsible.active {
+    background-color: #555;
+}
+
+.content {
+    padding: 10px;
+    display: none;
+    overflow-y: auto;
+    background-color: var(--filter-bg-color);
+    max-height: 400px;
+    border: 1px solid var(--border-color);
+    position: absolute;
+    top: 40px;
+    left: 0;
+    z-index: 10;
+    box-sizing: border-box;
+    width: 300px;
+    color: var(--text-color);
+    border-radius: 4px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.select-buttons {
+    margin: 10px 0;
+}
+
+.select-buttons button {
+    margin-right: 5px;
+    padding: 5px 10px;
+    font-size: 12px;
+    background-color: #555;
+    color: #f0f0f0;
+    border: 1px solid #666;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.select-buttons button:hover {
+    background-color: #666;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 5px;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: var(--text-color);
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+    accent-color: #888; /* For modern browsers */
+}
+
+/* Node Info Sidebar */
+#node-info {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    background-color: var(--node-info-bg-color);
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 10;
+    border-left: 1px solid var(--border-color);
+    height: 100%;
+    overflow-y: auto;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+#node-info h4 {
+    margin-top: 0;
+    color: var(--text-color);
+}
+
+#node-details p {
+    margin: 5px 0;
+    color: var(--text-color);
+    word-break: break-all;
+}
+
+/* Graph Container Styles */
+#cy {
+    position: absolute;
+    top: 50px; /* Height of the top bar */
+    left: 200px; /* Same as legend width */
+    right: 300px; /* Width of node info sidebar */
+    bottom: 0;
+    background-color: var(--background-color);
+    transition: background-color 0.3s ease;
+}
+
+/* Adjustments to prevent graph interactions when interacting with UI elements */
+#legend, #topbar, #node-info {
+    pointer-events: auto;
+}
+
+#cy {
+    pointer-events: auto;
+}
+
+#legend *, #topbar *, #node-info * {
+    pointer-events: auto;
+}
+
+/* Scrollbar styling */
+#legend::-webkit-scrollbar, .content::-webkit-scrollbar, #node-info::-webkit-scrollbar {
+    width: 8px;
+}
+
+#legend::-webkit-scrollbar-thumb, .content::-webkit-scrollbar-thumb, #node-info::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 4px;
+}
+
+/* Resizable handle for node-info */
+#resize-handle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px; /* Adjust handle width as needed */
+    height: 100%;
+    cursor: ew-resize;
+    background-color: var(--border-color); /* Make the handle visible */
+    z-index: 100; /* Ensure it's on top */
+}
